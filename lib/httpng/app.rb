@@ -49,6 +49,11 @@ module Httpng
       halt 200
     end
 
+    get '/*' do
+      file = File.join(settings.public_dir, "#{request.path_info}")
+      send_file(file, :disposition => 'inline', :filename => File.basename(file))
+    end
+
 
     ##############################################################################
     #
