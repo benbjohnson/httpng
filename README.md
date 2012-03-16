@@ -4,7 +4,10 @@ httpng - A local server for snapshotting HTML elements
 ## DESCRIPTION
 
 Httpng is a local server that you can run if you want to use HTML5 & CSS3 to
-design but you want to export the page elements as PNGs.
+design but you want to export the page elements as PNGs. The server uses the
+[html2canvas]([http://html2canvas.hertzen.com/]) library to render the elements
+on the screen. Please see the limitations section of this README for more
+information about what can and cannot be rendered.
 
 Httpng follows the rules of [Semantic Versioning](http://semver.org/).
 
@@ -30,7 +33,7 @@ by setting the `--port` or `-p` option on the command line.
 ## EXPORTING
 
 Once your server is running, simple add the following code to your HTML page in
-the <head> tag:
+the `<head>` tag:
 
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script src="/httpng.js"></script>
@@ -57,3 +60,16 @@ simply use the `--output` or `-o` arguments on the command line:
 
     $ httpng -o /path/to/my_output_dir
 
+
+## Limitations
+
+There are a few limitations with HTTPNG:
+
+1. Unable to mark more than one element as exportable (`data-export`).
+
+1. Text directly in the exported element will not render. For example, placing
+   text in a DIV (`<div>foo</div>`) will not render but putting the text in a
+   span or p will work: `<div><span>foo</span></div>`
+
+1. Any limitation of the html2canvas library:
+   [http://html2canvas.hertzen.com/](http://html2canvas.hertzen.com/).
