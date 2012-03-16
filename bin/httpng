@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+
+$:.unshift(File.dirname(__FILE__) + '/../lib')
+
+require 'rubygems'
+require 'optparse'
+require 'fileutils'
+require 'httpng'
+
+# Catch signals
+Signal.trap('TERM') do
+  Process.kill('KILL', 0)
+end
+
+# Default options.
+options = {
+  :port => 7020,
+  :output => File.join(Dir.getwd(), '/httpng-output')
+}
+
+# Parse options.
+parser = ::OptionParser.new do |parser|
+  parser.banner = 'usage: httpng [OPTIONS] [PATH]\n\n'
+
+  parser.on('-p', '--port [PORT]', 'Bind port (default 7020).') do |port|
+    options[:port] = port.to_i
+  end
+
+  parser.on('-o', '--output [DIR]', 'Output directory (default httpng/).') do |dir|
+    options[:output] = dir
+  end
+
+  parser.on('-v', '--version', 'Display current version.') do
+    puts "httpng #{Httpng::VERSION}"
+    exit 0
+  end
+end
+
+# Read command line options into `options` hash
+begin
+  parser.parse!
+rescue ::OptionParser::InvalidOption
+  puts "httpng: #{$!.message}"
+  puts "httpng: try 'httpng --help' for more information"
+  exit
+end
+
+# Validate options.
+if !File.exists?(options[:output])
+  FileUtils.mkdir_p(options[:output])
+elsif !File.directory?(options[:output])
+  puts "Output directory is not a directory"
+  exit
+end
+
+# Run the web server
+Httpng::App.set(:public_folder, Dir.getwd())
+Httpng::App.set(:output_path, options[:output])
+Httpng::App.run!(:port => options[:port])
+

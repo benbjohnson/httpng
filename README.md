@@ -51,9 +51,9 @@ your output directory.
 
 ## Output Directory
 
-By default, `httpng` will export your files to the `httpng/` directory relative
-to when you started the command from. To change the output directory, simply
-use the `--output` or `-o` arguments on the command line:
+By default, `httpng` will export your files to the `httpng-output/` directory
+relative to when you started the command from. To change the output directory,
+simply use the `--output` or `-o` arguments on the command line:
 
     $ httpng -o /path/to/my_output_dir
 
