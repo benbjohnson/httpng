@@ -65,8 +65,6 @@ simply use the `--output` or `-o` arguments on the command line:
 
 There are a few limitations with HTTPNG:
 
-1. Unable to mark more than one element as exportable (`data-export`).
-
 1. Text directly in the exported element will not render. For example, placing
    text in a DIV (`<div>foo</div>`) will not render but putting the text in a
    span or p will work: `<div><span>foo</span></div>`
