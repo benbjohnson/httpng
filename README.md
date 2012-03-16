@@ -32,11 +32,9 @@ by setting the `--port` or `-p` option on the command line.
 
 ## EXPORTING
 
-Once your server is running, simple add the following code to your HTML page in
-the `<head>` tag:
-
-    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src="/httpng.js"></script>
+The server automatically inserts the JavaScript tags required for httpng to work
+so just make sure your file includes `<HTML>` or `<HEAD>` and the file extension
+is `html`.
 
 When you load your page then you should see a bar at the top that gives you a
 button to export your images.

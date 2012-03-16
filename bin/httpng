@@ -54,7 +54,7 @@ elsif !File.directory?(options[:output])
 end
 
 # Run the web server
-Httpng::App.set(:public_folder, Dir.getwd())
+Httpng::App.set(:public_dir, Dir.getwd())
 Httpng::App.set(:output_path, options[:output])
 Httpng::App.run!(:port => options[:port])
 
