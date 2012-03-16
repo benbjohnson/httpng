@@ -53,6 +53,9 @@ elsif !File.directory?(options[:output])
   exit
 end
 
+# Show version.
+puts "== httpng v#{Httpng::VERSION}"
+
 # Run the web server
 Httpng::App.set(:public_dir, Dir.getwd())
 Httpng::App.set(:output_path, options[:output])
