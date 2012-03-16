@@ -94,8 +94,8 @@ module Httpng
       js = js.join("\n")
       
       # Insert into <head> if possible.
-      if html.sub!('<head>') {|text| "#{text}\n#{js}"}.nil?
-        html.sub!('<html>') {|text| "#{text}\n<head>\n#{js}</head>\n"}.nil?
+      if html.sub!(/<head>/i) {|text| "#{text}\n#{js}"}.nil?
+        html.sub!(/<html>/i) {|text| "#{text}\n<head>\n#{js}</head>\n"}.nil?
       end
 
       return html
