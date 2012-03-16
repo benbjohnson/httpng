@@ -2,7 +2,7 @@ $:.unshift(File.dirname(__FILE__) + '/lib')
 
 require 'rubygems'
 require 'rake'
-require 'rake/rdoctask'
+require 'rdoc/task'
 require 'httpng'
 
 #############################################################################
@@ -13,7 +13,7 @@ require 'httpng'
 
 Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "Grapevine #{Grapevine::VERSION}"
+  rdoc.title = "HTTPNG #{Httpng::VERSION}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
