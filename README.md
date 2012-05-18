@@ -26,8 +26,11 @@ run the following command:
 
     $ httpng
 
-This will run a web server at `http://localhost:7020`. You can change the port
-by setting the `--port` or `-p` option on the command line.
+This will run a web server at `localhost:7020`. You can change the port
+by setting the `--port` or `-p` option on the command line. When opening the
+web page in your browser, be sure to add the file name after the host and port.
+For example, if your file name is `my_page.html` then open up
+`http://localhost:7020/my_page.html` and not just `http://localhost:7020/`.
 
 
 ## EXPORTING
